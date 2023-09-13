@@ -25,3 +25,5 @@ shiztu.show()
 raw(shiztu)
 shiztu.show2()
 ```
+
+![Alt text](image-1.png)
