@@ -20,6 +20,11 @@ pip3 install ipython scapy
 ipython
 %run ./main.py
 shiztu = Doge(version=1, toptext="one does not simply", bottomtext="walk into mordor...", doge_png="todo", gotum=1)
+shiztu = Doge(version=1, toptext="one does not simply", bottomtext="walk into mordor...", gotum=1)
+shiztu = Doge(version=1, toptext="one does not simply", bottomtext="walk into mordor...", gotum=2, doge_png=open("./doge.png","rb").read() )
+shiztu = Doge(version=1,   gotum=2, doge_png=open("./doge.png","rb").read() )
+packet = IP(dst="192.168.1.1", src="192.168.1.68")/UDP()/Doge(version=1, toptext="one does not simply", bottomtext="walk into mordor...", gotum=1)
+
 ls(Doge)
 shiztu.show()
 raw(shiztu)
@@ -27,3 +32,11 @@ shiztu.show2()
 ```
 
 ![Alt text](image-1.png)
+
+
+# TODO encapsolate the doge protocol in UDP packet
+```javascript
+all it does is send doge pngs,
+its UDP like
+doesnt care if you you get the meme ;)
+```

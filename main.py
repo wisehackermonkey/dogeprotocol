@@ -3,19 +3,19 @@
 import struct
 import sys
 from scapy.all import *
+# f = open("./doge.png","rb").read()
 class Doge(Packet):
     name= "DogePacket"
+    
     fields_desc = [
         #https://scapy.readthedocs.io/en/latest/build_dissect.html#simple-datatypes
         ByteField("version",1),
         FieldLenField("toptext_len", None, count_of="toptext"),
-        StrField("toptext",None, fmt="H"),
-        StrStopField("toptext_end",default="\x09",stop="\x09"),
-
-        StrField("bottomtext",None, fmt="H"),
-        StrStopField("bottomtext_end",default="\x09",stop="\x09"),
-
-        ByteEnumField("gotum", 2, {1:"uhh",2:"deez-nuts"}),
-        StrFixedLenField("doge_png",34332),
-        XShortField("do_you_get_it",None)#aka checksum
+        
+        StrFixedLenField("toptext",None,length=25),
+        StrFixedLenField("bottomtext",None,length=25),
+        
+        StrFixedLenField("doge_png",default=open("./doge.png","rb").read(),length=3107), 
+        ByteEnumField("gotum", 0, {0: "idk", 1:"uhh",2:"deez_nuts"}),
+        ShortField("do_you_get_it",None)#aka checksum
     ]
